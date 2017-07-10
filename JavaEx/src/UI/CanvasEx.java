@@ -4,7 +4,10 @@ import java.awt.Button;
 import java.awt.Canvas;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Label;
+import java.awt.Panel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,17 +18,43 @@ public class CanvasEx extends Canvas implements ActionListener{
 
 	public Frame f;
 	public Image img;
-	public Button b;
+	public Button b,left,up,down,right;
 	public int x,y;
+	public Panel p;
+	public Label l1, l2;
 	public CanvasEx() {
-		x=10; y=10;
+		x=50; y=50;
+		p = new Panel();
+		p.setLayout(new GridLayout(2,3));
+		
+		l1 = new Label("");
+		l2 = new Label("");
+		
 		b = new Button("º¯°æ");
+		left = new Button("<");
+		up = new Button("^");
+		down = new Button("v");
+		right = new Button(">");
+		
+		left.addActionListener(this);
+		up.addActionListener(this);
+		down.addActionListener(this);
+		right.addActionListener(this);
+		
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		img = tool.getImage("C:\\Users\\odae\\Desktop\\Git\\kkyzzang016\\JavaEx\\src\\UI\\duke.jpg");
 		
+		p.add(l1);
+		p.add(up);
+		p.add(l2);
+		p.add(left);
+		p.add(down);
+		p.add(right);
+		
 		f = new Frame("Canvas Test");
 		f.add(this, "Center");
-		f.add(b, "South");
+		f.add(p, "South");
+		//f.add(b, "South");
 		f.setSize(500,500);
 		f.setVisible(true);
 		b.addActionListener(this);
@@ -42,8 +71,22 @@ public class CanvasEx extends Canvas implements ActionListener{
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		x++;
+		if(e.getSource()==up) {
+			y--;
+			repaint();
+		}
+		if(e.getSource()==down) {
+			y++;
 		repaint();
+		}
+		if(e.getSource()==left) {
+			x--;
+			repaint();
+		}
+		if(e.getSource()==right) {
+				x++;
+				repaint();
+		}
 		
 	}
 	public static void main(String[] args) {
