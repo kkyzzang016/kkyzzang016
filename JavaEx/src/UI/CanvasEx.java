@@ -21,7 +21,7 @@ public class CanvasEx extends Canvas implements ActionListener{
 		x=10; y=10;
 		b = new Button("º¯°æ");
 		Toolkit tool = Toolkit.getDefaultToolkit();
-		img = tool.getImage("c:/data/java_img/duke.jpg");
+		img = tool.getImage("C:\\Users\\odae\\Desktop\\Git\\kkyzzang016\\JavaEx\\src\\UI\\duke.jpg");
 		
 		f = new Frame("Canvas Test");
 		f.add(this, "Center");
@@ -37,7 +37,8 @@ public class CanvasEx extends Canvas implements ActionListener{
 	}
 	@Override
 	public void paint(Graphics g) {
-		g.drawRect(x, y, 10, 10);
+		//g.drawRect(x, y, 10, 10);
+		g.drawImage(img, x, y, this);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
