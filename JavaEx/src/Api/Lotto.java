@@ -15,8 +15,7 @@ public class Lotto {
 		for(int i=0;i<a.length;i++) {
 			a[i]=(int)(Math.random()*45)+1;
 			for(int j=0;j<i;j++) {
-				if(a[j]==a[i])
-					--i;
+				if(a[j]==a[i]) --i;
 			}
 		}
 		return a;
