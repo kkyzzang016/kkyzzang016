@@ -1,4 +1,4 @@
-package Basic;
+package Api;
 import java.util.Scanner;
 
 public class Lotto {
