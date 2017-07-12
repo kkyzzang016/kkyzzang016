@@ -21,7 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class BankFirst extends JFrame implements ActionListener{
+public class BankUI extends JFrame implements ActionListener{
 	private JFrame login_Jf;
 	private JPanel loginJp;
 	private JLabel login_ID, login_PW;
@@ -51,11 +51,12 @@ public class BankFirst extends JFrame implements ActionListener{
 	     add(c, gbc);
    }
  	
-	public BankFirst() {
+	public BankUI() {
 		login_Jf = new JFrame("은행");
 		loginJp = new JPanel();
 		login_ID = new JLabel("    login_ID : ");
 		login_PW = new JLabel("    login_PW : ");	
+		
 		login_JID = new JTextField(20);
 		login_JPW = new JTextField(20);
 		login_loginB = new JButton("로그인");
@@ -87,7 +88,7 @@ public class BankFirst extends JFrame implements ActionListener{
 		login_Jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public BankFirst(int num) { //메인화면
+	public BankUI(int num) { //메인화면
 
 		this.setTitle("회원정보");
 
@@ -219,7 +220,7 @@ public class BankFirst extends JFrame implements ActionListener{
 	}
 	public static void main(String[] args) {
 		//new BankFirst();
-		new BankFirst(4);
+		new BankUI(4);
 	}
 
 	

@@ -20,7 +20,6 @@ public class Lotto {
 		}
 		return a;
 	}
-	
 	public int[] sort(int[] a) {
 		int temp=0;
 		for(int i=0;i<a.length;i++) {
@@ -53,6 +52,7 @@ public class Lotto {
 			lot=l.sort(lot);
 			l.display(lot);
 			System.out.println();
+			if((i+1)%5==0) System.out.println();
 		}
 	}
 }
