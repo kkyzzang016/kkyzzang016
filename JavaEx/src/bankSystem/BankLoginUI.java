@@ -12,13 +12,14 @@ import javax.swing.JTextField;
 
 public class BankLoginUI extends JFrame implements ActionListener{
 
-	private JFrame login_Jf;
-	private JPanel loginJp;
-	private JLabel login_ID, login_PW;
-	private JTextField login_JID, login_JPW;
-	private JButton login_loginB, login_newjoin, login_exit;
+	JFrame login_Jf;
+	JPanel loginJp;
+	JLabel login_ID, login_PW;
+	JTextField login_JID, login_JPW;
+	JButton login_loginB, login_newjoin, login_exit;
+	BankNewUI bn; 
 	
-	public BankLoginUI() {
+	public void bankLoginUI() {
 		login_Jf = new JFrame("은행");
 		loginJp = new JPanel();
 		login_ID = new JLabel("    아이디 : ");
@@ -70,7 +71,8 @@ public class BankLoginUI extends JFrame implements ActionListener{
 		else if(e.getSource()==login_loginB) 
 			new BankMainUI();
 		else if(e.getSource()==login_newjoin) {
-			new BankNewUI();
+			bn= new BankNewUI();
+			bn.bankNewUI();
 			login_Jf.setVisible(false);
 		}
 	}

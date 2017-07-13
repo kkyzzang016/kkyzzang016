@@ -19,19 +19,22 @@ import javax.swing.table.DefaultTableModel;
 
 public class BankNewUI extends JFrame implements ActionListener{
 	
-	private JTextField tfID;
-	private JTextField tfName;
-	private JTextField tfBirth;
-	private JComboBox<String> cbHP1;
-	private JTextField tfHP1, tfHP2, tfHP3;
-	private JTextField tfEmail;
-	private JComboBox<String> cbEmail;
-	private JPasswordField pfPW1, pfPW2;
-	private JTextField acc;
-	private JButton btnConfirm, btnJoin;
-	private boolean idCheck;
+	JTextField tfID;
+	JTextField tfName;
+	JTextField tfBirth;
+	JComboBox<String> cbHP1;
+	 JTextField tfHP1, tfHP2, tfHP3;
+	 JTextField tfEmail;
+	 JComboBox<String> cbEmail;
+	 JPasswordField pfPW1, pfPW2;
+	 JTextField acc;
+	 JButton btnConfirm, btnJoin;
+	 boolean idCheck;
+
+	 BankLoginUI bl;
+	 BankMethod bm;
 	
-	public BankNewUI() {
+	public void bankNewUI() {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 30));
 		panel.setLayout(null);
@@ -45,6 +48,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(IDlbl);
 		tfID = new JTextField(20); // ID입력칸
 		tfID.setBounds(100, 60, 160, 25);
+		tfID.addActionListener(this);
 		panel.add(tfID);
 		btnConfirm = new JButton("중복확인");
 		btnConfirm.setBounds(270, 60, 90, 25);
@@ -58,16 +62,10 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(PWlbl);
 		pfPW1 = new JPasswordField(20); // 비밀번호 입력
 		pfPW1.setBounds(100, 90, 160, 25);
+		pfPW1.addActionListener(this);
 		panel.add(pfPW1);
 
-		// PW확인
-		JLabel PWlbl2 = new JLabel("확 인");
-		PWlbl2.setForeground(Color.WHITE);
-		PWlbl2.setBounds(60, 90, 330, 90);
-		panel.add(PWlbl2);
-		pfPW2 = new JPasswordField(20); // 비밀번호 확인 입력
-		pfPW2.setBounds(100, 120, 160, 25);
-		panel.add(pfPW2);
+		
 		
 		//계좌 (비활성화)
 		JLabel ACClbl2 = new JLabel("계 좌");
@@ -87,6 +85,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(namelbl);
 		tfName = new JTextField(20); // ID입력칸
 		tfName.setBounds(100, 180, 160, 25);
+		tfName.addActionListener(this);
 		panel.add(tfName);
 
 		// 주민등록번호
@@ -96,6 +95,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(birthlbl);
 		tfBirth = new JTextField(6); // 생년월일 입력칸
 		tfBirth.setBounds(100, 210, 80, 25);
+		tfBirth.addActionListener(this);
 		panel.add(tfBirth);
 		JLabel birthlbl2 = new JLabel("주민등록번호 앞자리만 입력");
 		birthlbl2.setForeground(Color.WHITE);
@@ -111,12 +111,15 @@ public class BankNewUI extends JFrame implements ActionListener{
 		String[] hp = {"010","011","016","017","018"};
 		cbHP1 = new JComboBox<String>(hp);
 		cbHP1.setBounds(100, 240, 50, 25);
+		cbHP1.addActionListener(this);
 		panel.add(cbHP1);
 		tfHP2 = new JTextField(4);
 		tfHP2.setBounds(155, 240, 50, 25);
+		tfHP2.addActionListener(this);
 		panel.add(tfHP2);
 		tfHP3 = new JTextField(4);
 		tfHP3.setBounds(210, 240, 50, 25);
+		tfHP3.addActionListener(this);
 		panel.add(tfHP3);
 
 		// 등록
@@ -133,10 +136,13 @@ public class BankNewUI extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		bl = new BankLoginUI();
+		bm = new BankMethod();
 		if(e.getSource()==btnJoin)
-			this.setVisible(false);
-			new BankLoginUI();
-		
+			{this.setVisible(false);
+		bm.newJoin();
+		bl.bankLoginUI();
+		}
 	}
 
 }

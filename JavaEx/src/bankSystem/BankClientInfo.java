@@ -6,10 +6,23 @@ public class BankClientInfo {
 	private String pw;
 	private String name;
 	private int account;
-	private String bank;
+	private int phone;
+	private int birth;
 	
 	public String getId() {
 		return id;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+	public int getBirth() {
+		return birth;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -32,12 +45,4 @@ public class BankClientInfo {
 	public void setAccount(int account) {
 		this.account = account;
 	}
-	public String getBank() {
-		return bank;
-	}
-	public void setBank(String bank) {
-		this.bank = bank;
-	}
-	
-	
 }
