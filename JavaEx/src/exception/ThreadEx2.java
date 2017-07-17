@@ -1,4 +1,4 @@
-
+package exception;
 public class ThreadEx2 implements Runnable{
 
 	public ThreadEx2() {
@@ -10,7 +10,7 @@ public class ThreadEx2 implements Runnable{
 	public void run() {
 		try {
 			while(true){
-				System.out.println("ÀÛ¾÷ Áß...");
+				System.out.println("ï¿½Û¾ï¿½ ï¿½ï¿½...");
 				Thread.sleep(1000);
 			}
 		}catch(InterruptedException e){

@@ -1,3 +1,4 @@
+package exception;
 import java.awt.Toolkit;
 
 public class ThreadEx3 {
@@ -13,7 +14,7 @@ public class ThreadEx3 {
 		public void run() {
 			try {
 				while(true) {
-					System.out.println("ÀÛ¾÷ Áß...");
+					System.out.println("ï¿½Û¾ï¿½ ï¿½ï¿½...");
 					Thread.sleep(1000);
 				}
 			}catch(InterruptedException e) {

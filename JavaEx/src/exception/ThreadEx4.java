@@ -1,4 +1,4 @@
-
+package exception;
 public class ThreadEx4 extends Thread {
 
 	public void run() {
@@ -8,9 +8,9 @@ public class ThreadEx4 extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println("ÀÛ¾÷Áß(ÀÏ)...");
+			System.out.println("ï¿½Û¾ï¿½ï¿½ï¿½(ï¿½ï¿½)...");
 		}
-		System.out.println("ÀÛ¾÷ÀÌ ¿Ï·á µÇ¾ú½À´Ï´Ù.");
+		System.out.println("ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	}
 	public static void main(String[] args) {
 		ThreadEx4 te = new ThreadEx4();
@@ -22,7 +22,7 @@ public class ThreadEx4 extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println("main ÀÛ¾÷Áß(ÀÏ)");
+			System.out.println("main ï¿½Û¾ï¿½ï¿½ï¿½(ï¿½ï¿½)");
 		}
 		
 		for(int i=0;i<10;i++) {
@@ -31,7 +31,7 @@ public class ThreadEx4 extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			System.out.println("main2 ÀÛ¾÷Áß(ÀÏ)");
+			System.out.println("main2 ï¿½Û¾ï¿½ï¿½ï¿½(ï¿½ï¿½)");
 		}
 	}
 }
