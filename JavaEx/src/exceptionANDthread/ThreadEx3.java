@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 import java.awt.Toolkit;
 
 public class ThreadEx3 {

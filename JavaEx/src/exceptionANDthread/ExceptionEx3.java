@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 
 public class ExceptionEx3 {
 

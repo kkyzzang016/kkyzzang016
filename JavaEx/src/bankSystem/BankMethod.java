@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 public class BankMethod {
 	
 		int accsu=0;
-		int current=0;
+		public int current=0;
 		int [] acc;
 		BankLoginUI bl = new BankLoginUI();
 		BankNewUI bn;
@@ -14,10 +14,13 @@ public class BankMethod {
 		//BankClientInfo bi = new BankClientInfo();
 		
 		public void init() {
-			/*String num=JOptionPane.showInputDialog("생성할 계좌의 수를 입력하세요!");
-			accsu=Integer.parseInt(num);*/
+			String num=JOptionPane.showInputDialog("생성할 계좌의 수를 입력하세요!");
+			accsu=Integer.parseInt(num);
 			System.out.println("execute");
-			list = new BankClientInfo[10];
+			list = new BankClientInfo[accsu];
+			for(int i=0;i<accsu;i++) {
+				list[i] = new BankClientInfo();
+			}
 			
 			bl.bankLoginUI();
 			makeAccount();
@@ -41,11 +44,6 @@ public class BankMethod {
 			bn.tfHP3.setText(null);
 		}
 		
-	/*	public void makePerson(int su) {
-			System.out.println("11");
-			list[0]=new BankClientInfo();
-		}*/
-		
 		public void makeAccount() {
 			acc= new int[accsu];
 			for(int i=0;i<accsu;i++) {
@@ -63,16 +61,13 @@ public class BankMethod {
 		public void newJoin() {
 		
 			bn = new BankNewUI();
-			//makePerson(0);
-			list[current] = new BankClientInfo();
-			list[current].setId("abc");
-/*		
+			list[0].setId("asd");
 			list[current].setPw(bn.pfPW1.getText());
 			list[current].setName(bn.tfName.getText());
 			list[current].setBirth(Integer.parseInt(bn.tfBirth.getText()));
 			list[current].setAccount(acc[current]);
 			String phone = (String)(bn.cbHP1.getSelectedItem())+bn.tfHP2.getText()+bn.tfHP3.getText();
-			list[current].setPhone(Integer.parseInt(phone));*/
+			list[current].setPhone(Integer.parseInt(phone));
 			current++;
 			}
 		}

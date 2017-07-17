@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 public class ThreadEx4 extends Thread {
 
 	public void run() {

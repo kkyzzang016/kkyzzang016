@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 
 public class ExceptionEx1 {
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class ExceptionEx1 {
 			return;
 			
 		}finally {
-			System.out.println("finally ½ÇÇà!!!!");
+			System.out.println("finally ï¿½ï¿½ï¿½ï¿½!!!!");
 		}
 	}
 }

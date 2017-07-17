@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 public class ThreadEx2 implements Runnable{
 
 	public ThreadEx2() {

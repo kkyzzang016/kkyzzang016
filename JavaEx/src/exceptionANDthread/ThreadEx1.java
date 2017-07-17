@@ -1,4 +1,4 @@
-package exception;
+package exceptionANDthread;
 public class ThreadEx1 extends Thread{
 
 	public ThreadEx1() {
