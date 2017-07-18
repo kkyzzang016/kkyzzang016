@@ -11,6 +11,8 @@ import java.awt.MenuItem;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedWriter;
@@ -21,10 +23,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 
 import javax.swing.JDialog;
 
-public class MenuIO extends Frame implements ActionListener{
+public class MenuIO extends Frame implements ActionListener, KeyListener{
 	public MenuBar mb;
 	public Menu m;
 	public Dialog dialog;
@@ -36,8 +39,14 @@ public class MenuIO extends Frame implements ActionListener{
 	BufferedWriter bw; 
 	PrintWriter pw; 
 	File file;
+	public int second=41;
+	Thread t;
+	Calendar cal;
+	
+	//생성자~
 	public MenuIO() {
 		ta = new TextArea();
+		ta.addKeyListener(this);
 		mb = new MenuBar();
 		m = new Menu("File");
 		mi = new MenuItem[5];
@@ -64,16 +73,37 @@ public class MenuIO extends Frame implements ActionListener{
 				System.exit(0);
 			}
 		});
+		cal = Calendar.getInstance();
+		int y=cal.get(Calendar.YEAR);
+		int m=cal.get(Calendar.MONTH)+1;
+		int d=cal.get(Calendar.DATE);
+		String date = y+"년 "+m+"월 "+d+"일 / ";
+		
+		t = new Thread(new Runnable() {
+			public void run() {
+						while(second>0) {
+							try {
+								Thread.sleep(1000);
+								second--;
+								setTitle(date+"자동종료 남은 시간 : "+second);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
+						}
+						System.exit(0);
+				}
+		});
+		t.start();
 	}
-	@Override
+	
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+
 		Object o = e.getSource();
+		second = 41;
 		NewDialog nd;
 		Label l =new Label("");
 		if(o==mi[4]) {
 			System.exit(0);
-			
 			
 		}else if(o==mi[0]) {
 			FileDialog fd = new FileDialog(this, "불러오기", FileDialog.LOAD);
@@ -83,7 +113,6 @@ public class MenuIO extends Frame implements ActionListener{
 			String f = fd.getFile();
 			String aa="";
 			file = new File(dir+"/"+f);
-			this.setTitle(f);
 			try {
 				reader = new FileReader(file);
 				while(reader.ready()) {
@@ -135,7 +164,6 @@ public class MenuIO extends Frame implements ActionListener{
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			this.setTitle(f);
 			file=null;
 			}
 			
@@ -159,7 +187,6 @@ public class MenuIO extends Frame implements ActionListener{
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			this.setTitle(f);
 			file=null;
 			}
 		}
@@ -167,6 +194,12 @@ public class MenuIO extends Frame implements ActionListener{
 	public static void main(String[] args) {
 		new MenuIO();
 	}
+
+	public void keyPressed(KeyEvent e1) {
+		second=41;
+	}
+	public void keyReleased(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {}
 	
 }
 class NewDialog extends JDialog{
