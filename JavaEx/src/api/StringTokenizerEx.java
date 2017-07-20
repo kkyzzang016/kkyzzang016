@@ -6,7 +6,7 @@ public class StringTokenizerEx {
 
 	public static void main(String[] args) {
 		String str = "자바 SE, 자바 EE, 자바 ME";
-		String delim = args[0];
+		String delim = " ";
 		StringTokenizer st;
 		st = new StringTokenizer(str, delim, false);
 		
