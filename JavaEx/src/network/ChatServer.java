@@ -3,10 +3,12 @@ package network;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Iterator;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class ChatServer {
 private Vector handlers;
+
 static Vector<String> list = new Vector<String>();
 	public ChatServer(int port) {
 		try{
@@ -20,7 +22,8 @@ static Vector<String> list = new Vector<String>();
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
+		} 
+
 	}
 	
 	public Object getHandler(int index) {
@@ -44,6 +47,7 @@ static Vector<String> list = new Vector<String>();
 					Iterator it = list.iterator();
 					while(it.hasNext()) {
 						temp += (String)it.next();
+
 					}
 					c.println(message+temp);
 				}catch(Exception ex) {
@@ -52,6 +56,7 @@ static Vector<String> list = new Vector<String>();
 			}
 		}
 	}
+
 	public static void main(String[] args) {
 		new ChatServer(9830);
 	}

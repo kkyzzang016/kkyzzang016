@@ -37,6 +37,7 @@ public class ChatClient extends JFrame implements Runnable,ActionListener{
 	private JList<String>list;
 	private String delim = "#";
 	private StringTokenizer st;
+	private String code = "100|";
 	
 	public ChatClient(String server) {
 		super("채팅 프로그램");
@@ -49,6 +50,9 @@ public class ChatClient extends JFrame implements Runnable,ActionListener{
 		output.setEditable(false);
 		add(scp, "Center");
 		scp.setViewportView(output);
+		list = new JList<String>();
+		list.setVisible(true);
+		add(list,"East");
 		/*scp.setVerticalScrollBarPolicy(scp.VERTICAL_SCROLLBAR_ALWAYS);
 		scp.setHorizontalScrollBarPolicy(scp.HORIZONTAL_SCROLLBAR_NEVER);*/
 		Panel bottom = new Panel(new BorderLayout());
@@ -62,11 +66,13 @@ public class ChatClient extends JFrame implements Runnable,ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(400,300);
 		setVisible(true);
+		
+		listall = new Vector<String>();
 	}
 
 	public void run() {
 		try {
-			Socket s = new Socket(host, 9830);
+			Socket s = new Socket(host, 9000);
 			InputStream ins = s.getInputStream();
 			OutputStream os = s.getOutputStream();
 			i= new BufferedReader(new InputStreamReader(ins));
@@ -75,9 +81,17 @@ public class ChatClient extends JFrame implements Runnable,ActionListener{
 				String line = i.readLine();		//여기서 올림
 				st = new StringTokenizer(line, delim, false);
 				int su = st.countTokens();
-				
-				output.append(line +"\n");
+				listall.removeAll(listall);
+				for(int i=0; i<su;i++) {
+					if(i==0) {
+						output.append(st.nextToken()+"\n");
+					}
+					else {
+						listall.add(st.nextToken());
+					}
+				}
 				scp.getVerticalScrollBar().setValue(scp.getVerticalScrollBar().getMaximum());
+				list.setListData(listall);
 			}
 		}catch(IOException ex) {
 			ex.printStackTrace();
@@ -88,7 +102,14 @@ public class ChatClient extends JFrame implements Runnable,ActionListener{
 		Object c = e.getSource();
 		if(c==input) {
 			label.setText("메시지");
-			o.println(input.getText());
+			if(input.getText().equals("종료")) {
+				o.println("300|"+input.getText());
+				System.exit(0);
+			}
+			else {
+			o.println(code+input.getText());
+			}
+			code="200|";
 			input.setText("");
 		}
 	}
