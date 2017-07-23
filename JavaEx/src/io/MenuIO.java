@@ -118,7 +118,7 @@ public class MenuIO extends Frame implements ActionListener, KeyListener{
 				while(reader.ready()) {
 					char ch = (char)reader.read();
 					//System.out.print(ch);
-					aa += Character.toString(ch);
+					aa += Character.toString(ch); 
 				}
 				ta.setText(aa);
 				reader.close();

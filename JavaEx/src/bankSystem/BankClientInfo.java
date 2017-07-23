@@ -5,23 +5,23 @@ public class BankClientInfo {
 	private String id;
 	private String pw;
 	private String name;
-	private int account;
-	private int phone;
-	private int birth;
+	private String account;
+	private String phone;
+	private String birth; 
 	
 	public String getId() {
 		return id;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public void setId(String id) {
@@ -39,10 +39,10 @@ public class BankClientInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAccount() {
+	public String getAccount() {
 		return account;
 	}
-	public void setAccount(int account) {
+	public void setAccount(String account) {
 		this.account = account;
 	}
 }

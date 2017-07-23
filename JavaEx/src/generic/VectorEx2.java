@@ -9,7 +9,7 @@ public class VectorEx2 {
 	public static void main(String[] args) {
 		
 		List<Board> list = new Vector<Board>();
-		
+		Vector<String> list2 = new Vector<String>();
 		list.add(new Board("제목1","내용1","글쓴이1"));
 		list.add(new Board("제목2","내용2","글쓴이2"));
 		list.add(new Board("제목3","내용3","글쓴이3"));

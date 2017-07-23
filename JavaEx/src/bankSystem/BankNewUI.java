@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -30,11 +31,10 @@ public class BankNewUI extends JFrame implements ActionListener{
 	 JTextField acc;
 	 JButton btnConfirm, btnJoin;
 	 boolean idCheck;
+	 BankMethod bm = new BankMethod();
 
-	 BankLoginUI bl;
-	 BankMethod bm;
-	
-	public void bankNewUI() {
+	public BankNewUI() {
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 30));
 		panel.setLayout(null);
@@ -46,7 +46,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		IDlbl.setForeground(Color.WHITE);
 		IDlbl.setBounds(50, 30, 330, 90);
 		panel.add(IDlbl);
-		tfID = new JTextField(20); // ID입력칸
+		tfID = new JTextField(20); // ID입력칸  
 		tfID.setBounds(100, 60, 160, 25);
 		tfID.addActionListener(this);
 		panel.add(tfID);
@@ -65,8 +65,6 @@ public class BankNewUI extends JFrame implements ActionListener{
 		pfPW1.addActionListener(this);
 		panel.add(pfPW1);
 
-		
-		
 		//계좌 (비활성화)
 		JLabel ACClbl2 = new JLabel("계 좌");
 		ACClbl2.setForeground(Color.WHITE);
@@ -74,7 +72,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(ACClbl2);
 		acc = new JTextField(20); // 비밀번호 확인 입력
 		acc.setBounds(100, 150, 160, 25);
-		acc.setBackground(Color.LIGHT_GRAY);
+		acc.setBackground(Color.LIGHT_GRAY);  
 		acc.setEnabled(false);
 		panel.add(acc);
 
@@ -85,14 +83,14 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(namelbl);
 		tfName = new JTextField(20); // ID입력칸
 		tfName.setBounds(100, 180, 160, 25);
-		tfName.addActionListener(this);
+		tfName.addActionListener(this);	
 		panel.add(tfName);
 
 		// 주민등록번호
 		JLabel birthlbl = new JLabel("생년월일");
 		birthlbl.setForeground(Color.WHITE);
 		birthlbl.setBounds(40, 180, 330, 90);
-		panel.add(birthlbl);
+		panel.add(birthlbl);			
 		tfBirth = new JTextField(6); // 생년월일 입력칸
 		tfBirth.setBounds(100, 210, 80, 25);
 		tfBirth.addActionListener(this);
@@ -103,16 +101,19 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.add(birthlbl2);
 
 		// 핸드폰
-		JLabel hplbl = new JLabel("핸드폰번호");
+		JLabel hplbl = new JLabel("핸드폰번호");   
 		hplbl.setForeground(Color.WHITE);
 		hplbl.setBounds(25, 210, 330, 90);
 		panel.add(hplbl);
 		//tfHP1 = new JTextField(4); // 번호 입력칸
 		String[] hp = {"010","011","016","017","018"};
-		cbHP1 = new JComboBox<String>(hp);
+		/*cbHP1 = new JComboBox<String>(hp);
 		cbHP1.setBounds(100, 240, 50, 25);
-		cbHP1.addActionListener(this);
-		panel.add(cbHP1);
+		cbHP1.addActionListener(this);*/
+		tfHP1 = new JTextField(3);
+		tfHP1.setBounds(100, 240, 50, 25);
+		tfHP1.addActionListener(this);
+		panel.add(tfHP1);
 		tfHP2 = new JTextField(4);
 		tfHP2.setBounds(155, 240, 50, 25);
 		tfHP2.addActionListener(this);
@@ -127,6 +128,7 @@ public class BankNewUI extends JFrame implements ActionListener{
 		btnJoin.setBounds(150, 300, 100, 30);
 		panel.add(btnJoin);
 		btnJoin.addActionListener(this);
+		btnJoin.setVisible(false);
 		
 		setVisible(true);
 		setSize(430, 400);
@@ -136,13 +138,34 @@ public class BankNewUI extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		bl = new BankLoginUI();
-		bm = new BankMethod();
-		if(e.getSource()==btnJoin)
-			{this.setVisible(false);
-		bm.newJoin();
-		bl.bankLoginUI();
+		
+		Object ob = e.getSource();
+
+		if(ob==btnJoin){
+			String phone = bm.addString(tfHP1.getText(), tfHP2.getText(), tfHP3.getText());
+			String total = bm.addString(tfID.getText(), pfPW1.getText(), tfName.getText(), bm.accMake(), phone, tfBirth.getText());
+			bm.clientIn(total);
+			bm.out(bm.in()+total);
+			dispose();
+			new BankLoginUI();
+		}
+		if(ob==btnConfirm){
+			boolean flag=bm.confirm(tfID.getText());
+			if(flag==true){
+				JOptionPane.showMessageDialog(btnConfirm, "사용가능한 ID입니다!");
+				btnJoin.setVisible(true);
+			}
+			else {
+				JOptionPane.showMessageDialog(btnConfirm, "중복된 ID입니다. 다른ID를 입력해주세요!");
+				btnJoin.setVisible(false);
+			}
 		}
 	}
+	
+	public static void main(String[] args) {
+		new BankNewUI();
+	}
+	
+	}
 
-}
+
