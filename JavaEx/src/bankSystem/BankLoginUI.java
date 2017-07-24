@@ -74,6 +74,7 @@ public class BankLoginUI extends JFrame implements ActionListener {
 		}
 		if(ob==login_loginB){
 			new BankMainUI();
+			login_Jf.dispose();
 		}
 	}
 

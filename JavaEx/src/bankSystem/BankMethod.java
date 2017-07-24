@@ -23,7 +23,7 @@ public class BankMethod {
 	FileWriter fw;
 	BufferedWriter bw;
 	PrintWriter pw;
-	File file = new File("C:\\Users\\Kang\\Desktop\\Git\\kkyzzang016\\JavaEx\\src\\bankSystem\\BankClient.txt");
+	File file = new File("C:\\Users\\odae\\Desktop\\Git\\kkyzzang016\\JavaEx\\src\\bankSystem\\BankClient.txt");
 	StringTokenizer st;
 	StringTokenizer stf;
 
@@ -137,4 +137,25 @@ public class BankMethod {
 		return flag;
 	}
 
+	//·Î±×ÀÎ
+	public boolean login(String id, String pw) {
+		
+		String tid="";
+		int index=0;
+		boolean flag=false;
+		
+		for(int i=0;i<client.size();i++) {
+			String temp = String.valueOf(client.get(i).getId());
+			if(temp.equals(id)) {
+				tid=id;
+				index=i;
+			}
+			else {
+				flag=false;
+			}
+		}
+		
+		
+		return flag;
+	}
 }
