@@ -46,7 +46,7 @@ public class StringEx {
 		String sub1 = str1.substring(2);
 		System.out.println(sub1);
 		
-		String sub2 = str1.substring(2, 5);
+		String sub2 = str1.substring(0, 2);
 		System.out.println(sub2);
 		
 		String empty = "       ab  c        ";

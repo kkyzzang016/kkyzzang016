@@ -31,20 +31,10 @@ public class DBEx2 {
 		}
 		
 		//insert
-		String name = "";
-		String userid = "";
-		String pwd = "";
-		
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.println("이름을 입력하세용!");
-		name=sc.nextLine();
-		System.out.println("아이디를 입력하세용!");
-		userid = sc.nextLine();
-		System.out.println("비밀번호를 입력하세요!");
-		pwd = sc.nextLine();
-		
-		String sql ="insert into member(name, userid, pwd) values ('"+name+"', '"+userid+"', '"+pwd+"')";
+		String name = "유승철";
+		String userid = "승철";
+	
+		String sql ="insert into member(name, userid) values ('"+name+"', '"+userid+"')";
 		
 		Statement stmt=null;
 		int result = -1;
