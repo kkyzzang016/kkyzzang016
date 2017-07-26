@@ -115,7 +115,6 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 				System.exit(0);
 			}
 		});
-		
 	}
 	public void search(String str) {
 		 DBAction db = DBAction.getInstance();
@@ -140,7 +139,7 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 	         while(rs.next()) {
 	        	 for(int i=1;i<=cols;i++) {
 	        		 temp += rs.getString(i)+" ";
-	        		 if(i==cols) temp+=rs.getString(i);
+	        		 if(i==cols) temp+="";
 	        	 }
 	        	 listall.add(temp);
 	        	 temp="";
