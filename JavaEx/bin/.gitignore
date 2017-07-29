@@ -1,8 +1,4 @@
+/jdbc/
 /api/
-/bankSystem/
-/basic/
-/exceptionANDthread/
-/generic/
-/io/
-/network/
-/uI/
+/lambda.class
+/lambda/
