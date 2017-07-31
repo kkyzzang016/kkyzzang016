@@ -69,12 +69,10 @@ public class ThreadRectDraw extends Frame implements Runnable {
 
   public void update(Graphics g) {
       paint(g);
-   
    }
   
    public void run(){
       while(true) {
-         repaint();
          try{
             Thread.sleep(10);
          }catch(InterruptedException e){

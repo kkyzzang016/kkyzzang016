@@ -74,12 +74,32 @@ public class CanvasEx extends Canvas implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==up) {
-			y--;
-			repaint();
+			Thread t = new Thread(new Runnable() {
+				public void run() {
+				while(y!=0) {
+					y-=2;
+					repaint();
+				}
+				}
+			});
+			t.start();
+			
 		}
 		if(e.getSource()==down) {
-			y++;
-		repaint();
+			Thread t = new Thread(new Runnable() {
+				public void run() {
+				while(y!=500) {
+					y++;
+					repaint();
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				}
+			});
+			t.start();
 		}
 		if(e.getSource()==left) {
 			x--;
