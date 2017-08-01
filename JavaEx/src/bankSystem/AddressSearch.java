@@ -1,4 +1,4 @@
-package jdbc;
+package bankSystem;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -23,58 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class Search extends JFrame implements ActionListener{
-	
-	JLabel jl;
-	JTextField jt,jf;
-	JButton button;
-	JPanel jp1, jp2;
-	String str;
-	
-	public Search(String str) {
-		
-		this.str = str;
-		jp1 = new JPanel();
-		jp2 = new JPanel();
-		jl = new JLabel("주소");
-		jl.setBounds(20, 55, 30, 30);
-		jt = new JTextField(25);
-		jt.setBounds(80, 60, 200, 20);
-		jt.setText(str);
-		button = new JButton("검색");
-		button.setBounds(290, 60, 100, 20);
-		button.addActionListener(this);
-		jf = new JTextField(25);
-		
-		jp1.add(jl);
-		jp1.add(jt);
-		jp1.add(button);
-		add(jp1,"North");
-		add(jf,"Center");
-		setVisible(true);
-		setSize(430, 200);
-		setLocation(300, 300);
-		addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				System.exit(0);
-			}
-		});
-	}
-	public void actionPerformed(ActionEvent e) {
-		
-		Object ob = e.getSource();
-		if(ob==button) {
-			new View(jt.getText());
-			dispose();
-		}
-	}
-	public static void main(String[] args) {
-		new Search("");
-	}
-}
 
-
-class View extends JFrame implements ActionListener, ListSelectionListener{
+public class AddressSearch extends JFrame implements ActionListener, ListSelectionListener{
 
 	JLabel jl;
 	JTextField jt;
@@ -83,10 +33,10 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 	Vector<String> listall;
 	JScrollPane js;
 	JPanel jp1, jp2;
-	String str;
-	public View(String str) {
+	String str="";
+	BankMethod bm = new BankMethod();
+	public AddressSearch() {
 		
-		this.str = str;
 		listall = new Vector<String>();
 		jp1 = new JPanel();
 		jp2 = new JPanel();
@@ -123,7 +73,7 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 	      if(str.charAt(str.length()-1) == '동'||str.charAt(str.length()-1) == '면') {
 	      int len = str.length();
 	      str = str.substring(0,len-1);
-	      System.out.println(str);
+	      //System.out.println(str);
 	      }
 	      
 	      String sql = "select * from zipcode where DONG like '"+str+"%'";
@@ -151,13 +101,14 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 				try {
 					rs.close();
 					stmt.close();
-					conn.close();
+					//conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
 	      }
 	      list.setListData(listall);
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 		if(ob==button) {
@@ -167,9 +118,9 @@ class View extends JFrame implements ActionListener, ListSelectionListener{
 	public void valueChanged(ListSelectionEvent lse) {
 		
 		if(!lse.getValueIsAdjusting()) {
-			String getT = list.getSelectedValue();
-			new Search(getT);
+			str = list.getSelectedValue();
 			dispose();
+			BankNewUI.add.setText(str);
 		}
 	}
 }

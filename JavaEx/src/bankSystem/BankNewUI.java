@@ -28,8 +28,9 @@ public class BankNewUI extends JFrame implements ActionListener{
 	 JTextField tfEmail;
 	 JComboBox<String> cbEmail;
 	 JPasswordField pfPW1, pfPW2;
-	 JTextField acc;
-	 JButton btnConfirm, btnJoin;
+	 JTextField acc,add1;
+	 public static JTextField add;
+	 JButton btnConfirm, btnJoin,btnadd;
 	 boolean idCheck;
 	 BankMethod bm = new BankMethod();
 
@@ -40,72 +41,94 @@ public class BankNewUI extends JFrame implements ActionListener{
 		panel.setLayout(null);
 		this.add(panel);
 
-		// È¸¿ø °¡ÀÔ Á¤º¸ ÀÔ·Â
+		// íšŒì› ê°€ì… ì •ë³´ ì…ë ¥
 		// ID
-		JLabel IDlbl = new JLabel("¾ÆÀÌµğ");
+		JLabel IDlbl = new JLabel("ì•„ì´ë””");
 		IDlbl.setForeground(Color.WHITE);
 		IDlbl.setBounds(50, 30, 330, 90);
 		panel.add(IDlbl);
-		tfID = new JTextField(20); // IDÀÔ·ÂÄ­  
+		tfID = new JTextField(20); // IDì…ë ¥ì¹¸  
 		tfID.setBounds(100, 60, 160, 25);
 		tfID.addActionListener(this);
+		tfID.disable();
 		panel.add(tfID);
-		btnConfirm = new JButton("Áßº¹È®ÀÎ");
+		btnConfirm = new JButton("ì¤‘ë³µí™•ì¸");
 		btnConfirm.setBounds(270, 60, 90, 25);
 		btnConfirm.addActionListener(this);
 		panel.add(btnConfirm);
 
 		// PW
-		JLabel PWlbl = new JLabel("ÆĞ½º¿öµå");
+		JLabel PWlbl = new JLabel("íŒ¨ìŠ¤ì›Œë“œ");
 		PWlbl.setForeground(Color.WHITE);
 		PWlbl.setBounds(40, 60, 330, 90);
 		panel.add(PWlbl);
-		pfPW1 = new JPasswordField(20); // ºñ¹Ğ¹øÈ£ ÀÔ·Â
+		pfPW1 = new JPasswordField(20); // ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
 		pfPW1.setBounds(100, 90, 160, 25);
 		pfPW1.addActionListener(this);
 		panel.add(pfPW1);
+		
+		// ì£¼ì†Œ
+		JLabel ADlbl = new JLabel("       ì£¼ ì†Œ");
+		ADlbl.setForeground(Color.WHITE);
+		ADlbl.setBounds(40, 90, 330, 90);
+		panel.add(ADlbl);
+		add = new JTextField(20); // ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
+		add.setBounds(100, 120, 130, 25);
+		add.addActionListener(this);
+		panel.add(add);
+		add.disable();
+		add1 = new JTextField(20); // ë¹„ë°€ë²ˆí˜¸ ì…ë ¥
+		add1.setBounds(235, 120, 90, 25);
+		add1.addActionListener(this);
+		panel.add(add1);
+		add1.disable();
+		btnadd = new JButton("ê²€ìƒ‰");
+		btnadd.setBounds(330, 120, 60, 25);
+		btnadd.addActionListener(this);
+		panel.add(btnadd);
 
-		//°èÁÂ (ºñÈ°¼ºÈ­)
-		JLabel ACClbl2 = new JLabel("°è ÁÂ");
+		//ê³„ì¢Œ (ë¹„í™œì„±í™”)
+		JLabel ACClbl2 = new JLabel("ê³„ ì¢Œ");
 		ACClbl2.setForeground(Color.WHITE);
 		ACClbl2.setBounds(60, 120, 330, 90);
 		panel.add(ACClbl2);
-		acc = new JTextField(20); // ºñ¹Ğ¹øÈ£ È®ÀÎ ÀÔ·Â
+		acc = new JTextField(20); // ë¹„ë°€ë²ˆí˜¸ í™•ì¸ ì…ë ¥
 		acc.setBounds(100, 150, 160, 25);
-		acc.setBackground(Color.LIGHT_GRAY);  
-		acc.setEnabled(false);
+		acc.setBackground(Color.white);  
+		acc.disable();
+		acc.setText(bm.makeAccount());
 		panel.add(acc);
 
-		// ¼ºÇÔ
-		JLabel namelbl = new JLabel("¼º ÇÔ");
+		// ì„±í•¨
+		JLabel namelbl = new JLabel("ì„± í•¨");
 		namelbl.setForeground(Color.WHITE);
 		namelbl.setBounds(60, 150, 330, 90);
 		panel.add(namelbl);
-		tfName = new JTextField(20); // IDÀÔ·ÂÄ­
+		tfName = new JTextField(20); // IDì…ë ¥ì¹¸
 		tfName.setBounds(100, 180, 160, 25);
 		tfName.addActionListener(this);	
 		panel.add(tfName);
 
-		// ÁÖ¹Îµî·Ï¹øÈ£
-		JLabel birthlbl = new JLabel("»ı³â¿ùÀÏ");
+		// ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸
+		JLabel birthlbl = new JLabel("ìƒë…„ì›”ì¼");
 		birthlbl.setForeground(Color.WHITE);
 		birthlbl.setBounds(40, 180, 330, 90);
 		panel.add(birthlbl);			
-		tfBirth = new JTextField(6); // »ı³â¿ùÀÏ ÀÔ·ÂÄ­
+		tfBirth = new JTextField(6); // ìƒë…„ì›”ì¼ ì…ë ¥ì¹¸
 		tfBirth.setBounds(100, 210, 80, 25);
 		tfBirth.addActionListener(this);
 		panel.add(tfBirth);
-		JLabel birthlbl2 = new JLabel("ÁÖ¹Îµî·Ï¹øÈ£ ¾ÕÀÚ¸®¸¸ ÀÔ·Â");
+		JLabel birthlbl2 = new JLabel("ì£¼ë¯¼ë“±ë¡ë²ˆí˜¸ ì•ìë¦¬ë§Œ ì…ë ¥");
 		birthlbl2.setForeground(Color.WHITE);
 		birthlbl2.setBounds(190, 180, 330, 90);
 		panel.add(birthlbl2);
 
-		// ÇÚµåÆù
-		JLabel hplbl = new JLabel("ÇÚµåÆù¹øÈ£");   
+		// í•¸ë“œí°
+		JLabel hplbl = new JLabel("í•¸ë“œí°ë²ˆí˜¸");   
 		hplbl.setForeground(Color.WHITE);
 		hplbl.setBounds(25, 210, 330, 90);
 		panel.add(hplbl);
-		//tfHP1 = new JTextField(4); // ¹øÈ£ ÀÔ·ÂÄ­
+		//tfHP1 = new JTextField(4); // ë²ˆí˜¸ ì…ë ¥ì¹¸
 		String[] hp = {"010","011","016","017","018"};
 		/*cbHP1 = new JComboBox<String>(hp);
 		cbHP1.setBounds(100, 240, 50, 25);
@@ -123,8 +146,8 @@ public class BankNewUI extends JFrame implements ActionListener{
 		tfHP3.addActionListener(this);
 		panel.add(tfHP3);
 
-		// µî·Ï
-		btnJoin = new JButton("µî  ·Ï");
+		// ë“±ë¡
+		btnJoin = new JButton("ë“±  ë¡");
 		btnJoin.setBounds(150, 300, 100, 30);
 		panel.add(btnJoin);
 		btnJoin.addActionListener(this);
@@ -133,39 +156,43 @@ public class BankNewUI extends JFrame implements ActionListener{
 		setVisible(true);
 		setSize(430, 400);
 		setLocation(800, 450);
-        //setDefaultCloseOperation(EXIT_ON_CLOSE); //System.exit(0) //ÇÁ·Î±×·¥Á¾·á
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //dispose(); //ÇöÀçÃ¢¸¸ ´İ´Â´Ù.
+        //setDefaultCloseOperation(EXIT_ON_CLOSE); //System.exit(0) //í”„ë¡œê·¸ë¨ì¢…ë£Œ
+        setDefaultCloseOperation(EXIT_ON_CLOSE); //dispose(); //í˜„ì¬ì°½ë§Œ ë‹«ëŠ”ë‹¤.
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		
 		Object ob = e.getSource();
 
-		if(ob==btnJoin){
-			String phone = bm.addString(tfHP1.getText(), tfHP2.getText(), tfHP3.getText());
-			String total = bm.addString(tfID.getText(), pfPW1.getText(), tfName.getText(), bm.accMake(), phone, tfBirth.getText());
-			bm.clientIn(total);
-			bm.out(bm.in()+total);
-			dispose();
-			new BankLoginUI();
+		if(ob == btnadd) {
+			new AddressSearch();
+			add1.enable();
+			add.enable();
 		}
-		if(ob==btnConfirm){
-			boolean flag=bm.confirm(tfID.getText());
-			if(flag==true){
-				JOptionPane.showMessageDialog(btnConfirm, "»ç¿ë°¡´ÉÇÑ IDÀÔ´Ï´Ù!");
+		if(ob ==btnConfirm) {
+			String tempid = JOptionPane.showInputDialog("IDë¥¼ ì…ë ¥í•˜ì„¸ìš”!");
+			if(bm.idConfirm(tempid)) {
+				JOptionPane.showMessageDialog(null, "ì‚¬ìš©ê°€ëŠ¥í•œ IDì…ë‹ˆë‹¤!");
 				btnJoin.setVisible(true);
+				tfID.setText(tempid);
+			}
+			else JOptionPane.showMessageDialog(null, "ì¤‘ë³µëœ IDì…ë‹ˆë‹¤. ìƒˆë¡œìš´ IDë¥¼ ì…ë ¥í•˜ì„¸ìš”!");
+		}
+		if(ob == btnJoin) {
+			if(tfID.getText().equals(null)||pfPW1.getText().equals(null)||add.getText().equals(null)||add1.getText().equals(null)||
+					acc.getText().equals(null)||tfName.getText().equals(null)||tfBirth.equals(null)||tfHP1.getText().equals(null)||
+					tfHP2.getText().equals(null)||tfHP3.getText().equals(null)) {
+				JOptionPane.showMessageDialog(null, "ì •ë³´ê°€ ëˆ„ë½ë˜ì—ˆìŠµë‹ˆë‹¤!");
 			}
 			else {
-				JOptionPane.showMessageDialog(btnConfirm, "Áßº¹µÈ IDÀÔ´Ï´Ù. ´Ù¸¥ID¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!");
-				btnJoin.setVisible(false);
+				bm.newClient(tfID.getText(), pfPW1.getText(), tfName.getText(), add.getText(), add1.getText(), acc.getText(), 
+																	tfHP1.getText(), tfHP2.getText(), tfHP3.getText(), tfBirth.getText());
+				dispose();
+				new BankLoginUI();
 			}
 		}
 	}
 	
-	public static void main(String[] args) {
-		new BankNewUI();
-	}
+	
 	
 	}
-
-

@@ -16,146 +16,75 @@ import java.util.Vector;
 
 public class BankMethod {
 
-	Vector<BankClientInfo> client = new Vector<BankClientInfo>();
-	Vector<String> totalid = new Vector<String>();
-	String curID="";
-	FileReader reader;
-	FileWriter fw;
-	BufferedWriter bw;
-	PrintWriter pw;
-	File file = new File("C:\\Users\\odae\\Desktop\\Git\\kkyzzang016\\JavaEx\\src\\bankSystem\\BankClient.txt");
-	StringTokenizer st;
-	StringTokenizer stf;
-
-	//»ı¼ºÀÚ
-	public BankMethod() {
-		String temp=in();
-		firstIn(temp);
-	}
-	//º¸³»±â
-	public void out(String str) {
-		try {
-			fw = new FileWriter(file);
-			bw = new BufferedWriter(fw);
-			pw = new PrintWriter(bw, true);
-
-			pw.append(str + "\n");
-			pw.close();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-	}
-	//°¡Á®¿À±â
-	public String in() {
-		String aa = "";
-		try {
-			reader = new FileReader(file);
-			while (reader.ready()) {
-				char ch = (char) reader.read();
-				aa += Character.toString(ch);
-			}
-			reader.close();
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		return aa;
-	}
-	//ÀÔ·Â°ª ºÙÀÓ
-	public String addString(String id, String pw, String name, String account, String phone, String birth) {
-		String result = id + "#" + pw + "#" + name + "#" + account + "#" + phone + "#" + birth;
-		return result;
-	}
-	//ÀÔ·Â°ª ºÙÀÓ#2
-	public String addString(String str1, String str2, String str3) {
-		String result = str1 + str2 + str3;
-		return result;
-	}
-	//parsing
-	public void firstIn(String str){
-		stf = new StringTokenizer(str,"\n");
-		int size = stf.countTokens();
-		
-		for(int i=0;i<size;i++){
-			clientIn(stf.nextToken());
-		}
-	}
-	//°èÁÂ¹øÈ£ »ı¼º
-	public String accMake(){
-		String str = String.valueOf((Math.random()*100));
-		return str;
-	}
-	//½Å±Ô°í°´ »ı¼º½Ã È£Ãâ
-	public void clientIn(String str) {
-		BankClientInfo bi = new BankClientInfo();
-		st = new StringTokenizer(str, "#");
-		int size = st.countTokens();
-		for (int i = 0; i < size; i++) {
-			switch (i) {
-				case 0:
-					String token = st.nextToken();
-					bi.setId(token);
-					totalid.add(token);
-					break;
+	public static Vector<BankClientInfo> client = new Vector<BankClientInfo>();
+	public static int insertnum=1;
+	BankDB bd = new BankDB();
 	
-				case 1:
-					bi.setPw(st.nextToken());
-					break;
-	
-				case 2:
-					bi.setName(st.nextToken());
-					break;
-	
-				case 3:
-					bi.setAccount(st.nextToken());
-					break;
-	
-				case 4:
-					bi.setPhone(st.nextToken());
-					break;
-	
-				case 5:
-					bi.setBirth(st.nextToken());
-					break;
-				
-				default: System.out.println("¿À·ùÀÓ¸¶");
-					break;
-			}
-		}
-		client.add(bi);
-	}
-	
-	//Áßº¹Ã¼Å©
-	public boolean confirm(String str){
-		
+	//íšŒì›ê°€ì… ì‹œ ì¤‘ë³µì²´í¬ ë©”ì†Œë“œ
+	public boolean idConfirm(String str) { 
 		boolean flag = false;
-		for(int i=0;i<totalid.size();i++){
-			if(totalid.contains(str)){
+		for(int i=0;i<BankMethod.client.size();i++) {
+			String tempid = String.valueOf(BankMethod.client.get(i).getId());
+			if(tempid.equals(str)) {
 				flag=false;
+				break;
 			}
-			else flag=true;
+			else flag =true;
 		}
 		return flag;
 	}
+	
+	//í´ë¼ì´ì–¸íŠ¸ ì¶”ê°€1
+	public void newClient(String id, String pw, String name, String add, String add1, String account, 
+													String phone1, String phone2, String phone3, String birth) { 
+		
+		String address = add+add1;
+		String phone = phone1+phone2+phone3;
+		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth);
+		client.add(bi);
+		bd.insertCilentData(bi, insertnum);
+	}
+	
+	//í´ë¼ì´ì–¸íŠ¸ ì¶”ê°€2
+	public void newClient(String id, String pw, String name, String address, String account, 
+			String phone, String birth) { 
 
-	//·Î±×ÀÎ
-	public boolean login(String id, String pw) {
-		
-		String tid="";
-		int index=0;
-		boolean flag=false;
-		
-		for(int i=0;i<client.size();i++) {
-			String temp = String.valueOf(client.get(i).getId());
-			if(temp.equals(id)) {
-				tid=id;
-				index=i;
-			}
-			else {
-				flag=false;
+		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth);
+		client.add(bi);
+		bd.insertCilentData(bi, insertnum);
+	}
+	
+	//ê³„ì¢Œë²ˆí˜¸ ìƒì„±
+	public String makeAccount() { 
+		String temp = null;
+		for(int i=0;i<client.size()+1;i++) {
+			temp = String.valueOf((int)(Math.random()*10000)+1);
+			for(int j=0;j<i;j++) {
+				if(client.get(j).getAccount().equals(temp))	i--;
 			}
 		}
-		
-		
+		return temp;
+	}
+	
+	//í”„ë¡œê·¸ë¨ ì‹œì‘
+	public void start() {		
+		bd.initCilentData();
+		new BankLoginUI();
+	}
+	
+	//ë¡œê·¸ì¸ ë©”ì†Œë“œ
+	public boolean login(String id, String pw) { 
+		boolean flag = false;
+		String realid;
+		String realpw;
+		for(int i=0;i<client.size();i++) {
+			realid = client.get(i).getId();
+			realpw = client.get(i).getPw();
+			if(realid.equals(id)&&realpw.equals(pw)) {
+				flag = true;
+				break;
+			}
+		}
 		return flag;
 	}
 }

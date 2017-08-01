@@ -5,10 +5,27 @@ public class BankClientInfo {
 	private String id;
 	private String pw;
 	private String name;
+	private String address;
 	private String account;
 	private String phone;
 	private String birth; 
 	
+	public BankClientInfo(String id, String pw, String name, String address, String account, String phone, String birth) {
+		this.id=id;
+		this.pw=pw;
+		this.name=name;
+		this.address=address;
+		this.account=account;
+		this.phone=phone;
+		this.birth=birth;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getId() {
 		return id;
 	}

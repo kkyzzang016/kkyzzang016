@@ -1,4 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/bankSystem/AddressSearch.java=UTF-8
+encoding//src/bankSystem/BankAdmin.java=UTF-8
+encoding//src/bankSystem/BankDB.java=UTF-8
+encoding//src/bankSystem/BankLoginUI.java=UTF-8
+encoding//src/bankSystem/BankMethod.java=UTF-8
+encoding//src/bankSystem/BankNewUI.java=UTF-8
 encoding//src/generic/ArrayListEx.java=UTF-8
 encoding//src/generic/ArraysAsListEx.java=UTF-8
 encoding//src/generic/BoundedTypeParameterEx.java=UTF-8
@@ -10,3 +16,5 @@ encoding//src/generic/ProductEx.java=UTF-8
 encoding//src/generic/Util.java=UTF-8
 encoding//src/generic/VectorEx.java=UTF-8
 encoding//src/generic/WildCardEx.java=UTF-8
+encoding//src/jdbc/Search.java=UTF-8
+encoding/<project>=US-ASCII
