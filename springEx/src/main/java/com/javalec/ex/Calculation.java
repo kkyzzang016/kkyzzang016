@@ -2,37 +2,20 @@ package com.javalec.ex;
 
 public class Calculation {
 
-	private int firstNum;
-	private int secondNum;
-	
-	public int getFirstNum() {
-		return firstNum;
-	}
-	public void setFirstNum(int firstNum) {
-		this.firstNum = firstNum;
-	}
-	public int getSecondNum() {
-		return secondNum;
-	}
-	public void setSecondNum(int secondNum) {
-		this.secondNum = secondNum;
-	}
-	
-	public void add() {
+	public void add(int i, int s) {
 		System.out.println("add()");
-		System.out.println(firstNum+" + "+secondNum+" = "+(firstNum+secondNum));
+		System.out.println(i+" + "+s+" = "+(i+s));
 	}
-	public void sub() {
+	public void sub(int i, int s) {
 		System.out.println("sub()");
-		System.out.println(firstNum+" - "+secondNum+" = "+(firstNum-secondNum));
+		System.out.println(i+" - "+s+" = "+(i-s));
 	}
-	public void multi() {
+	public void multi(int i, int s) {
 		System.out.println("multi()");
-		System.out.println(firstNum+" * "+secondNum+" = "+(firstNum*secondNum));
+		System.out.println(i+" * "+s+" = "+(i*s));
 	}
-	public void div() {
+	public void div(int i, int s) {
 		System.out.println("div()");
-		System.out.println(firstNum+" / "+secondNum+" = "+(firstNum/secondNum));
+		System.out.println(i+" / "+s+" = "+(i/s));
 	}
-	
 }
