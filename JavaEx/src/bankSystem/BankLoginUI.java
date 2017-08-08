@@ -67,7 +67,7 @@ public class BankLoginUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 		if(ob==login_newjoin){
-			dispose();
+			login_Jf.dispose();
 			new BankNewUI();
 		}
 		if(ob==login_exit){

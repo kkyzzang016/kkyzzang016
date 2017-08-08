@@ -9,8 +9,9 @@ public class BankClientInfo {
 	private String account;
 	private String phone;
 	private String birth; 
+	private int money;
 	
-	public BankClientInfo(String id, String pw, String name, String address, String account, String phone, String birth) {
+	public BankClientInfo(String id, String pw, String name, String address, String account, String phone, String birth, int money) {
 		this.id=id;
 		this.pw=pw;
 		this.name=name;
@@ -18,8 +19,17 @@ public class BankClientInfo {
 		this.account=account;
 		this.phone=phone;
 		this.birth=birth;
+		this.money=money;
 	}
 	
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	public String getAddress() {
 		return address;
 	}

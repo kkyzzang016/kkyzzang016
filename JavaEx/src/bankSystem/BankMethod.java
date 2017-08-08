@@ -17,9 +17,10 @@ import java.util.Vector;
 public class BankMethod {
 
 	public static Vector<BankClientInfo> client = new Vector<BankClientInfo>();
-	public static int insertnum=1;
+	public static String currentID="";
 	BankDB bd = new BankDB();
-	
+
+
 	//회원가입 시 중복체크 메소드
 	public boolean idConfirm(String str) { 
 		boolean flag = false;
@@ -40,18 +41,18 @@ public class BankMethod {
 		
 		String address = add+add1;
 		String phone = phone1+phone2+phone3;
-		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth);
+		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth,0);
 		client.add(bi);
-		bd.insertCilentData(bi, insertnum);
+		bd.insertCilentData(bi);
 	}
 	
 	//클라이언트 추가2
 	public void newClient(String id, String pw, String name, String address, String account, 
 			String phone, String birth) { 
 
-		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth);
+		BankClientInfo bi = new BankClientInfo(id, pw, name, address, account, phone, birth,0);
 		client.add(bi);
-		bd.insertCilentData(bi, insertnum);
+		bd.insertCilentData(bi);
 	}
 	
 	//계좌번호 생성
@@ -65,7 +66,42 @@ public class BankMethod {
 		}
 		return temp;
 	}
+	//회원정보 삭제(벡터)
+	public void deleteVector(String str) {
+		for(int i=0;i<client.size();i++) {
+			if(client.get(i).getId().equals(str)) {
+				client.remove(i);
+			}
+		}
+	}
 	
+	//회원정보 수정(벡터)
+	public void updateVector(String tid,String id, String pw, String name, String address, String account, 
+			String phone, String birth, int money) {
+		for(int i=0;i<client.size();i++) {
+			if(client.get(i).getId().equals(tid)) {
+				client.get(i).setId(id);
+				client.get(i).setPw(pw);
+				client.get(i).setName(name);
+				client.get(i).setAddress(address);
+				client.get(i).setAccount(account);
+				client.get(i).setPhone(phone);
+				client.get(i).setBirth(birth);
+				client.get(i).setMoney(money);
+			}
+		}
+	}
+	
+	//수정 인덱스 찾는 메소드
+		public int searchIndex(String str) {
+			int state = 0;
+			for(int i=0;i<client.size();i++) {
+				if(client.get(i).getId().equals(str)) {
+					state = i;
+				}
+			}
+			return state;
+		}
 	//프로그램 시작
 	public void start() {		
 		bd.initCilentData();
@@ -82,9 +118,21 @@ public class BankMethod {
 			realpw = client.get(i).getPw();
 			if(realid.equals(id)&&realpw.equals(pw)) {
 				flag = true;
+				currentID = id;
 				break;
 			}
 		}
 		return flag;
+	}
+	//메인창에서 사용중인 회원정보를 가지는 객체찾기
+	public BankClientInfo clientInfo(String id) {
+		
+		BankClientInfo bi = null;
+		for(int i=0;i<client.size();i++) {
+			if(client.get(i).getId().equals(id)) {
+				bi = client.get(i);
+			}
+		}
+		return bi;
 	}
 }
