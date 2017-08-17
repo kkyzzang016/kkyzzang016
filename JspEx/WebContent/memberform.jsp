@@ -72,7 +72,7 @@
 
 			<tr>
 				<td colspan="2" align="center" bgcolor="#b0e0e6"><input
-					type="submit" name="confirm" value="등 록"> <input
+					type="submit" name="confirm" value="등 록" onclick=""> <input
 					type="reset" name="reset" value="다시입력"> <input
 					type="button" value="가입안함"
 					onclick="javascript:window.location='main.jsp'"></td>
