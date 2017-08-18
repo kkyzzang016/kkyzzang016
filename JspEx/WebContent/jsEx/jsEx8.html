@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function filterShortcut(event){
+		var code = event.keyCode;
+		if(code > 47 && code < 58){
+			return;
+		}
+		/*
+		값을 입력할 떄 다양한 단축키를 사용할 수 있다.
+		Ctrl +A
+		입력한 값을 선택
+		Ctrl + Z
+		실행취소
+		Ctral + Y
+		다시실행
+		이런 단축키를 지원하기 위해 Ctrl 또는 Alt키가 눌러진 상태라면 입력을 허용합니다.
+		*/
+		
+		//참고
+		/*
+				키				코드
+			TAB				9
+			HOME			36
+			END				35
+			LEFT				37
+			RIGHT			39
+			BACKSPACE		8
+			DELETE			46
+		*/
+		
+		/*
+		if(code==9 || code==36 || code==35 || code==37 || code==39 || code==8 || code==46){
+			return;
+		} 
+		*/
+		
+		if(event.ctrlKey|| event.altKey){
+			return;
+		}
+		var result = event.preventDefault();
+	}
+</script>
+</head>
+<body onload="document.f.t.focus();">
+	<h3>키 이벤트의 사용법</h3>
+		<form name="f">
+		입력 : <input type="text" name="t" value="" onkeydown="filterShortcut(event);"><br>
+		
+		</form>
+		
+</body>
+</html>

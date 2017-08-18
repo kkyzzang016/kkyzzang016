@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function checkText(text){
+		if(text.value==""){
+			alert("이름을 먼저 입력하여 주세요.");
+			text.focus();
+		}
+	}
+</script>
+</head>
+<body onLoad="document.f.t.focus()">
+	<h3> onBlur의 사용법</h3>
+	<form name="f">
+	이름 : <input type="text" name="t" value=""  onBlur="checkText(this)"><br>
+	비번 : <input type="password" name="userpass"><br>
+	학번 : <input type="text" name="classNo"><br>
+	</form>
+</body>
+</html>

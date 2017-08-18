@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script language="JavaScript">
+
+var kor, eng, mat, total, avg;
+kor = prompt("국어점수를 입력해주세요","0");
+kor = parseInt(kor);
+eng = parseInt(prompt("영어점수를 입력해주세요","0"));
+
+mat = prompt("수학점수를 입력해주세요","0");
+mat = parseInt(mat);
+total = kor+eng+mat;
+avg = total/3;
+
+document.write("<center>");
+document.write("국어점수 : "+kor+"&nbsp&nbsp");
+document.write("영어점수 : "+eng+"&nbsp&nbsp");
+document.write("수학점수 : "+mat+"<br>");
+document.write("총점 : "+total+"&nbsp&nbsp");
+document.write("평균 : "+avg+"&nbsp&nbsp");
+
+/* switch(avg/10){
+case 10:
+case 9:
+	document.write("등급 : A");
+	break;
+	
+case 8:
+	document.write("등급 : B");
+	break;
+	
+case 7:
+	document.write("등급 : C");
+	break;
+	
+default:
+	document.write("등급 : F");
+	break;
+	
+} */
+if(avg>=90) document.write("등급 : A");
+else if(avg>=80&&avg<90) document.write("등급 : B");
+else if(avg>=70&&avg<80) document.write("등급 : C");
+else document.write("등급 : F");
+
+document.write("</center>");
+</script>
+</head>
+<body>
+
+</body>
+</html>
