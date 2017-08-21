@@ -7,27 +7,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name=f method="post" action=".jsp">
-		<center>
-			<table border=2 cellspacing=0 width=300>
+	<center>
+		<form method="post" action="Login">
+			<br>
+			<br>
+			<br>
+			<h2>환영합니다!</h2>
+			<br>
+			<table border=3 cellspacing=0 width=300>
 				<tr>
-					<td align=center height=40><b> ID </b></td>
-					<td align=center><input type="text" size=20 maxlength=16
-						name="id"></td>
+					<td align=center height=50><b>Name</b></td>
+					<td align=center><input type=text size=20 maxlength=10 name="name">
+					</td>
 				</tr>
 				<tr>
-					<td align=center height=40><b> PASSWORD </b></td>
-					<td align=center><input type="password" size=20 maxlength=10
-						name="pass"></td>
+					<td align=center height=50><b>Job</b></td>
+					<td align=center><input type=text size=20 maxlength=10 name="job">
+					</td>
 				</tr>
 				<tr align=center>
-					<td colspan=2 height=40><input type="button" value=" ok " onclick=check(this.form) /> &nbsp;&nbsp; 
-						<input type="reset" value=" cancel " /> &nbsp;&nbsp;
-					    <a href="insertForm.jsp">회원가입</a>
+					<td colspan="2" height=50>
+					<input type="submit" value="전송">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="reset" value="취소">
 					</td>
 				</tr>
 			</table>
-		</center>
-	</form>
+		</form>
+	</center>
 </body>
 </html>
