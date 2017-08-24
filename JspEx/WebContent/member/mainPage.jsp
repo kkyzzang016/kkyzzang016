@@ -7,13 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form method="post" action="loginTestPRo.jsp">
-	<label for="userid">아이디 : </label>
-	<input tupe="text" name="id" id="userid"><br>
-	<label for="userpwd">암&nbsp; 호 : </label>
-	<input type="password" name="pwd" id="userpwd"><br>
-	<input type="submit" value="로그인">
-	
-	</form>
+	<%=request.getParameter("id") %>님 안녕하세요!
+	<br> 저희 홈페이지에 방문해 주셔서 감사합니다!
+	<br> 즐거운 시간 되세요....
+	<br>
 </body>
 </html>
