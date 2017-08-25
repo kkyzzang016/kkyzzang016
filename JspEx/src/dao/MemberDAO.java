@@ -141,4 +141,37 @@ public class MemberDAO {
 
 	   return ui;
    }
+   public int updateMember(UserInfo mVo) {
+	      int result = -1;
+	      Connection conn = getConnection();
+	      String sql = "update userinfo set pass=?, name=?, regist=? where id=?";
+	      PreparedStatement pstmt = null;
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, mVo.getPass());
+	         pstmt.setString(2, mVo.getName());
+	         pstmt.setString(3, mVo.getRegist());
+	         pstmt.setString(4, mVo.getId());
+	         
+	         result = pstmt.executeUpdate();
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return result;
+	   }
+	   
+	   public int memberDelete(String id) {
+	      int result = -1;
+	      String sql = "delete from userinfo where id=?";
+	      Connection conn = getConnection();
+	      PreparedStatement pstmt = null;
+	      try {
+	         pstmt = conn.prepareStatement(sql);
+	         pstmt.setString(1, id);
+	         result = pstmt.executeUpdate();
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return result;
+	   }
 }
