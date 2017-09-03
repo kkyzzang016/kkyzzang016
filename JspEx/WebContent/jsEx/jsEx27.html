@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/JspEx/js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+<p>문단1</p>
+<p>문단2</p>
+<p id="para3">문단3</p>
+<p>문단4</p>
+<p>문단5</p>
+<script>
+$('#para3').nextAll().addBack().css('background', 'yellow');
+</script>
+</body>
+</html>

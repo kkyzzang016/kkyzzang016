@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="/JspEx/js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<h3>이순신</h3>
+	<p>조선시대의 해군이다.</p>
+	<a href="#" id="viewdetail">자세히 보기</a>
+	<div id="detail" style="display:none">
+		<p>임진왜란때 어쩌고 저쩌고</p>
+	</div>
+	<script>
+		$('#viewdetail').click(function(){
+			$('#detail').toggle();
+		});
+	</script>
+</body>
+</html>

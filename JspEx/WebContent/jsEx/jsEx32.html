@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>each</title>
+<script src="/JspEx/js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+	<h3 id="0">문단0</h3>
+	<h3 id="1">문단1</h3>
+	<h3 id="2">문단2</h3>
+	<h3 id="3">문단3</h3>
+	<h3 id="4">문단4</h3>
+	<script>
+		var arColor=['yellow','red','green','blue','gray'];
+		$('h3').each(function(index,item){
+			$(item).css('background',arColor[index]);
+		});
+		
+		$('#0').bind('click', function() {alert("yellow 클릭했습니다.");});
+		$('#1').bind('click', function() {alert("red 클릭했습니다.");});
+		$('#2').bind('click', function() {alert("green 클릭했습니다.");});
+		$('#3').bind('click', function() {alert("blue 클릭했습니다.");});
+		$('#4').bind('click', function() {alert("gray 클릭했습니다.");});
+	</script>
+</body>
+</html>

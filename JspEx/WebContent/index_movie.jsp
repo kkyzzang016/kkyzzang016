@@ -9,7 +9,6 @@
 <body>
 <%
 	response.sendRedirect("movieList.do");
-
 %>
 </body>
 </html>
