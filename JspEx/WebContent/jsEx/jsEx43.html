@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style type="text/css">
+
+	#pop{
+	width:200px;
+	height:100px;
+	position:absolute;
+	left:50px;
+	top:50px;
+	background: #993;
+	}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("a:first").click(function(){
+			$("#pop").clearQueue().animate({
+				height:300,
+				width:800,
+				left:200,
+				top:100
+			})
+		})
+		$("a:last").click(function(){
+			$("#pop").clearQueue().animate({
+				height : 100,
+				width : 200,
+				left : 50,
+				top : 50
+			})
+		})
+	})
+</script>
+<body>
+	<a href="#">크게</a>
+	<a href="#">작게</a>
+	<div id="pop"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>function</title>
+<script src="/JspEx/js/jquery-1.11.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		//alert("start");
+		$("button").mouseover(function(){ 	//click, hover=2번 발생, mouseover=1번 발생
+			$("p").toggle();
+		});
+		
+		$("p.content1").mouseover(function(){ 
+			$("h2").text("내용 1");
+		});
+		
+		$("p.content2").mouseover(function(){ 
+			$("h2").text("내용 2");
+		});
+		$("#1").mouseover(function(){ 
+			$("h2").html("<img id=\"1\" src=\"cosmos.jpg\">");
+		});
+		$("#2").mouseover(function(){ 
+			$("h2").html("<img id=\"2\" src=\"title.gif\">");
+		});
+		$("#3").mouseover(function(){ 
+			$("h2").html("<img id=\"3\" src=\"ok2.gif\">");
+		});
+	});
+	
+	/*
+	$("#tagID").show();		//display 속성을 block으로 바꾼다.
+	$("#tagID").hide();		//display 속성을 none으로 바꾼다.
+	$("#tagID").toggle();	//show -> hide, hide -> show
+	*/
+</script>
+</head>
+<body>
+	<h2>view</h2>
+	<div>
+	<p class="content1">내용 1</p>
+	<p class="content2">내용 2</p>
+	<img id="1" src="cosmos.jpg" />
+	<img id="2" src="title.gif" />
+	<img id="3" src="ok2.gif" />
+	</div>
+	<button>버튼</button>
+</body>
+</html>

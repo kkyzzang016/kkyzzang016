@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>id demo</title>
+<style>
+	div,p,span{
+	width:130px;
+	height:90px;
+	float:left;
+	padding:5px;
+	margin:5px;
+	background-color: #eee;
+	
+	}
+
+</style>
+<script src="/JspEx/js/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+<!-- 	<div id="notMe">
+		<p>id="notMe"</p>
+	</div>
+	<div id="myDiv">id="myDiv"</div> -->
+	
+	<div>div</div>
+	<p class="myClass">p class="myClass"</p>
+	<p class="notMyClass">p class="notMyClass"</p> <!-- 생략 -->
+	<span>span</span>
+	
+	<script>
+		//$("#myDiv").css("border","3px solid red");	
+		$("div, span, p.myClass").css("border","3px solid red");	
+
+	</script>
+</body>
+</html>
