@@ -1,4 +1,4 @@
-package board_ctr;
+package board_ctr.action;
 
 import java.io.IOException;
 
@@ -7,13 +7,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board_ctr.action.Action;
-
-public class BoardWriteFormAction implements Action{
+public class BoardCheckPassFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/boardWrite.jsp";
+
+		String url = "/board/boardCheckPass.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
