@@ -16,7 +16,7 @@ public class DBManager {
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			//jdbc/myoracleÀÌ¶õ ÀÌ¸§À» °´Ã¼·Î Ã£¾Æ¼­ DataSource°¡ ¹Þ´Â´Ù.
+			//jdbc/myoracleï¿½Ì¶ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ DataSourceï¿½ï¿½ ï¿½Þ´Â´ï¿½.
 			DataSource ds = (DataSource)envContext.lookup("jdbc/mysql");
 			conn = ds.getConnection();
 		}catch(Exception e) {
@@ -24,8 +24,8 @@ public class DBManager {
 		}
 		return conn;
 	}
-	
-	//select¸¦ ¼öÇàÇÑ ÈÄ ¸®¼Ò½º ÇØÁ¦¸¦ À§ÇÑ ¸Þ¼Òµå
+
+	//selectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	public static void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
 			rs.close();
@@ -35,7 +35,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void close(Connection conn, Statement stmt) {
 		try {
 			stmt.close();
@@ -44,7 +44,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void close(Connection conn, PreparedStatement pstmt) {
 		try {
 			pstmt.close();
